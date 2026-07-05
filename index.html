@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexora — Where Filmmaking Meets AI Technology</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'google-sans-flex': ['"Google Sans Flex"', 'sans-serif'],
+                        'poppins': ['"Poppins"', 'sans-serif'],
+                        'inter': ['"Inter"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .fade-delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .fade-delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .fade-delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        .fade-delay-4 {
+            animation-delay: 0.4s;
+        }
+
+        .fade-delay-5 {
+            animation-delay: 0.5s;
+        }
+
+        .fade-delay-6 {
+            animation-delay: 0.6s;
+        }
+
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details summary {
+            list-style: none;
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .noise-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.05;
+            mix-blend-mode: overlay;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .grid-bg {
+            background-image: linear-gradient(#e5e5e5 1px, transparent 1px), linear-gradient(90deg, #e5e5e5 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .float-anim {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .pulse-ring::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 9999px;
+            border: 2px solid #059669;
+            animation: pulse-ring 2s ease-out infinite;
+        }
+
+        .service-card:hover .service-icon {
+            background-color: #059669;
+            color: white;
+            border-color: #059669;
+        }
+
+        .work-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+
+<body class="bg-[#F8FAFC] font-inter text-[#0F172A]">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 h-16 flex items-center transition-all duration-300"
+        style="background: rgba(255,255,255,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(229,229,229,0.5);">
+        <div class="max-w-6xl mx-auto w-full px-6 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-[#059669] rounded-lg flex items-center justify-center">
+                    <span class="text-white font-google-sans-flex font-bold text-sm">N</span>
+                </div>
+                <span class="font-google-sans-flex font-semibold text-xl tracking-tight">Nexora</span>
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#services"
+                    class="text-sm font-medium text-[#64748B] hover:text-[#059669] transition-colors">Services</a>
+                <a href="#about"
+                    class="text-sm font-medium text-[#64748B] hover:text-[#059669] transition-colors">About</a>
+                <a href="#work"
+                    class="text-sm font-medium text-[#64748B] hover:text-[#059669] transition-colors">Work</a>
+                <a href="#testimonials"
+                    class="text-sm font-medium text-[#64748B] hover:text-[#059669] transition-colors">Reviews</a>
+                <a href="#contact"
+                    class="text-sm font-medium text-[#64748B] hover:text-[#059669] transition-colors">Contact</a>
+            </div>
+            <div class="hidden md:flex items-center gap-3">
+                <a href="tel:09574601791"
+                    class="flex items-center gap-1.5 text-sm font-medium text-[#64748B] hover:text-[#059669] transition-colors">
+                    <iconify-icon icon="lucide:phone" width="14"></iconify-icon>
+                    95746 01791
+                </a>
+                <a href="#contact"
+                    class="bg-[#059669] hover:bg-[#047857] text-white text-sm font-medium px-5 py-2.5 rounded-lg transition-colors">
+                    Get a Quote
+                </a>
+            </div>
+            <button id="menuBtn" class="md:hidden p-2 text-[#64748B] hover:text-[#0F172A] transition-colors">
+                <iconify-icon icon="lucide:menu" width="24"></iconify-icon>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu"
+        class="mobile-menu fixed top-0 right-0 bottom-0 w-72 z-[60] bg-white shadow-2xl p-6 flex flex-col">
+        <div class="flex items-center justify-between mb-8">
+            <span class="font-google-sans-flex font-semibold text-lg">Menu</span>
+            <button id="closeMenuBtn" class="p-2 text-[#64748B] hover:text-[#0F172A] transition-colors">
+                <iconify-icon icon="lucide:x" width="24"></iconify-icon>
+            </button>
+        </div>
+        <div class="flex flex-col gap-4">
+            <a href="#services"
+                class="mobile-link text-base font-medium text-[#0F172A] hover:text-[#059669] transition-colors py-2 border-b border-[#F1F5F9]">Services</a>
+            <a href="#about"
+                class="mobile-link text-base font-medium text-[#0F172A] hover:text-[#059669] transition-colors py-2 border-b border-[#F1F5F9]">About</a>
+            <a href="#work"
+                class="mobile-link text-base font-medium text-[#0F172A] hover:text-[#059669] transition-colors py-2 border-b border-[#F1F5F9]">Work</a>
+            <a href="#testimonials"
+                class="mobile-link text-base font-medium text-[#0F172A] hover:text-[#059669] transition-colors py-2 border-b border-[#F1F5F9]">Reviews</a>
+            <a href="#contact"
+                class="mobile-link text-base font-medium text-[#0F172A] hover:text-[#059669] transition-colors py-2 border-b border-[#F1F5F9]">Contact</a>
+        </div>
+        <div class="mt-auto">
+            <a href="tel:09574601791" class="flex items-center gap-2 text-sm text-[#64748B] mb-4">
+                <iconify-icon icon="lucide:phone" width="14"></iconify-icon>
+                95746 01791
+            </a>
+            <a href="#contact"
+                class="mobile-link block text-center bg-[#059669] hover:bg-[#047857] text-white text-sm font-medium px-5 py-3 rounded-lg transition-colors">
+                Get a Quote
+            </a>
+        </div>
+    </div>
+    <div id="menuOverlay" class="fixed inset-0 bg-black/30 z-[55] hidden"></div>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 md:pt-48 pb-20 md:pb-32 overflow-hidden">
+        <!-- Background decorations -->
+        <div class="absolute top-20 left-1/4 w-72 h-72 bg-emerald-200/30 rounded-full blur-3xl pointer-events-none">
+        </div>
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl pointer-events-none">
+        </div>
+
+        <div class="relative z-10 max-w-6xl mx-auto px-6 text-center">
+            <!-- Badge -->
+            <div
+                class="fade-in-up fade-delay-1 inline-flex items-center gap-2 bg-white border border-[#E2E8F0] rounded-full px-4 py-1.5 mb-8 shadow-sm">
+                <div class="relative w-2 h-2">
+                    <span class="absolute inset-0 bg-[#059669] rounded-full"></span>
+                    <span class="absolute inset-0 bg-[#059669] rounded-full animate-ping"></span>
+                </div>
+                <span class="text-xs font-medium text-[#64748B]">Ahmedabad's Premier AI Content Agency</span>
+            </div>
+
+            <!-- Heading -->
+            <h1
+                class="fade-in-up fade-delay-2 font-google-sans-flex font-semibold text-4xl md:text-6xl tracking-tight leading-[1.1] mb-6 max-w-4xl mx-auto">
+                Where Traditional Filmmaking Meets
+                <span class="relative inline-block">
+                    <span class="relative z-10 text-[#059669]">AI Technology</span>
+                    <span class="absolute bottom-1 left-0 right-0 h-3 bg-emerald-200/50 rounded-full -z-0"></span>
+                </span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="fade-in-up fade-delay-3 text-lg text-[#64748B] leading-relaxed max-w-2xl mx-auto mb-10">
+                We craft high-quality cinematic videos, engaging social media content, and innovative AI-driven
+                animations that give your brand a powerful identity in the digital world.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="fade-in-up fade-delay-4 flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                <a href="#contact"
+                    class="bg-[#059669] hover:bg-[#047857] text-white text-base font-medium px-8 py-3 rounded-lg transition-colors flex items-center gap-2 shadow-sm">
+                    Start Your Project
+                    <iconify-icon icon="lucide:arrow-right" width="18"></iconify-icon>
+                </a>
+                <a href="#work"
+                    class="bg-[#0F172A] hover:bg-[#1E293B] text-white text-base font-medium px-8 py-3 rounded-lg transition-colors flex items-center gap-2">
+                    <iconify-icon icon="lucide:play" width="18"></iconify-icon>
+                    View Our Work
+                </a>
+            </div>
+
+            <!-- Trust indicators -->
+            <div class="fade-in-up fade-delay-5 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10">
+                <div class="flex items-center gap-2">
+                    <div class="flex -space-x-2">
+                        <img src="https://picsum.photos/seed/nexora-client1/40/40.jpg"
+                            class="w-9 h-9 rounded-full border-2 border-white object-cover" alt="">
+                        <img src="https://picsum.photos/seed/nexora-client2/40/40.jpg"
+                            class="w-9 h-9 rounded-full border-2 border-white object-cover" alt="">
+                        <img src="https://picsum.photos/seed/nexora-client3/40/40.jpg"
+                            class="w-9 h-9 rounded-full border-2 border-white object-cover" alt="">
+                    </div>
+                    <div class="text-left">
+                        <div class="flex items-center gap-0.5">
+                            <iconify-icon icon="lucide:star" width="14" class="text-yellow-400"></iconify-icon>
+                            <iconify-icon icon="lucide:star" width="14" class="text-yellow-400"></iconify-icon>
+                            <iconify-icon icon="lucide:star" width="14" class="text-yellow-400"></iconify-icon>
+                            <iconify-icon icon="lucide:star" width="14" class="text-yellow-400"></iconify-icon>
+                            <iconify-icon icon="lucide:star" width="14" class="text-yellow-400"></iconify-icon>
+                        </div>
+                        <span class="text-xs text-[#64748B]">5.0 from 14 Google reviews</span>
+                    </div>
+                </div>
+                <div class="hidden sm:block w-px h-8 bg-[#E2E8F0]"></div>
+                <div class="flex items-center gap-2 text-sm text-[#64748B]">
+                    <iconify-icon icon="lucide:map-pin" width="16" class="text-[#059669]"></iconify-icon>
+                    Bapunagar, Ahmedabad
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="relative py-20 md:py-24">
+        <div class="max-w-6xl mx-auto px-6">
+            <!-- Section header -->
+            <div class="text-center mb-16">
+                <span class="inline-block text-xs font-medium uppercase tracking-widest text-[#059669] mb-3">What We
+                    Do</span>
+                <h2 class="font-google-sans-flex font-semibold text-2xl md:text-[30px] tracking-tight mb-4">Services
+                    Built for Modern Brands</h2>
+                <p class="text-[#64748B] text-lg leading-relaxed max-w-2xl mx-auto">From concept to final cut, we handle
+                    every step with a hybrid approach that blends human creativity with AI precision.</p>
+            </div>
+
+            <!-- Services grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Service 1 -->
+                <div
+                    class="service-card group bg-white border border-[#E2E8F0] rounded-xl p-6 hover:border-emerald-300/50 hover:shadow-md transition-all cursor-default">
+                    <div
+                        class="service-icon w-12 h-12 border border-[#E2E8F0] rounded-lg flex items-center justify-center mb-5 transition-all">
+                        <iconify-icon icon="lucide:video" width="22"
+                            class="text-[#059669] group-hover:text-white transition-colors"></iconify-icon>
+                    </div>
+                    <h3 class="font-google-sans-flex font-semibold text-lg mb-2">Cinematic Video Production</h3>
+                    <p class="text-sm text-[#64748B] leading-relaxed">Professional-grade film production with
+                        cinema-quality cameras, lighting, and storytelling for brands that want to make an impact.</p>
+                </div>
+
+                <!-- Service 2 -->
+                <div
+                    class="service-card group bg-white border border-[#E2E8F0] rounded-xl p-6 hover:border-emerald-300/50 hover:shadow-md transition-all cursor-default">
+                    <div
+                        class="service-icon w-12 h-12 border border-[#E2E8F0] rounded-lg flex items-center justify-center mb-5 transition-all">
+                        <iconify-icon icon="lucide:sparkles" width="22"
+                            class="text-[#059669] group-hover:text-white transition-colors"></iconify-icon>
+                    </div>
+                    <h3 class="font-google-sans-flex font-semibold text-lg mb-2">AI-Driven Animations</h3>
+                    <p class="text-sm text-[#64748B] leading-relaxed">Cutting-edge animations powered by AI tools that
+                        deliver stunning visual effects, motion graphics, and generative content at scale.</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div
+                    class="service-card group bg-white border border-[#E2E8F0] rounded-xl p-6 hover:border-emerald-300/50 hover:shadow-md transition-all cursor-default">
+                    <div
+                        class="service-icon w-12 h-12 border border-[#E2E8F0] rounded-lg flex items-center justify-center mb-5 transition-all">
+                        <iconify-icon icon="lucide:smartphone" width="22"
+                            class="text-[#059669] group-hover:text-white transition-colors"></iconify-icon>
+                    </div>
+                    <h3 class="font-google-sans-flex font-semibold text-lg mb-2">Social Media Content</h3>
+                    <p class="text-sm text-[#64748B] leading-relaxed">Scroll-stopping reels, shorts, and carousel
+                        content optimized for Instagram, YouTube, and LinkedIn to grow your audience.</p>
+                </div>
+
+                <!-- Service 4 -->
+                <div
+                    class="service-card group bg-white border border-[#E2E8F0] rounded-xl p-6 hover:border-emerald-300/50 hover:shadow-md transition-all cursor-default">
+                    <div
+                        class="service-icon w-12 h-12 border border-[#E2E8F0] rounded-lg flex items-center justify-center mb-5 transition-all">
+                        <iconify-icon icon="lucide:palette" width="22"
+                            class="text-[#059669] group-hover:text-white transition-colors"></iconify-icon>
+                    </div>
+                    <h3 class="font-google-sans-flex font-semibold text-lg mb-2">Brand Identity Design</h3>
+                    <p class="text-sm text-[#64748B] leading-relaxed">Complete branding packages including logos, color
+                        systems, typography, and visual guidelines that define who you are.</p>
+                </div>
+
+                <!-- Service 5 -->
+                <div
+                    class="service-card group bg-white border border-[#E2E8F0] rounded-xl p-6 hover:border-emerald-300/50 hover:shadow-md transition-all cursor-default">
+                    <div
+                        class="service-icon w-12 h-12 border border-[#E2E8F0] rounded-lg flex items-center justify-center mb-5 transition-all">
+                        <iconify-icon icon="lucide:clapperboard" width="22"
+                            class="text-[#059669] group-hover:text-white transition-colors"></iconify-icon>
+                    </div>
+                    <h3 class="font-google-sans-flex font-semibold text-lg mb-2">Ad Film Production</h3>
+                    <p class="text-sm text-[#64748B] leading-relaxed">High-converting TV and digital ad films crafted
+                        with professional scripts, casting, and post-production expertise.</p>
+                </div>
+
+                <!-- Service 6 -->
+                <div
+                    class="service-card group bg-white border border-[#E2E8F0] rounded-xl p-6 hover:border-emerald-300/50 hover:shadow-md transition-all cursor-default">
+                    <div
+                        class="service-icon w-12 h-12 border border-[#E2E8F0] rounded-lg flex items-center justify-center mb-5 transition-all">
+                        <iconify-icon icon="lucide:wand-2" width="22"
+                            class="text-[#059669] group-hover:text-white transition-colors"></iconify-icon>
+                    </div>
+                    <h3 class="font-google-sans-flex font-semibold text-lg mb-2">Hybrid Post-Production</h3>
+                    <p class="text-sm text-[#64748B] leading-relaxed">AI-accelerated editing, color grading, VFX
+                        compositing, and sound design—delivering cinema results in less time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About / Why Nexora -->
+    <section id="about" class="relative py-20 md:py-24 overflow-hidden">
+        <div class="absolute inset-0 grid-bg opacity-30 pointer-events-none"></div>
+        <div class="relative z-10 max-w-6xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <!-- Left: Image -->
+                <div class="relative">
+                    <div class="rounded-2xl overflow-hidden shadow-lg border border-[#E2E8F0]">
+                        <img src="https://picsum.photos/seed/nexora-studio/640/480.jpg" alt="Nexora Studio"
+                            class="w-full h-auto object-cover">
+                    </div>
+                    <!-- Floating stat card -->
+                    <div
+                        class="absolute -bottom-6 -right-4 md:right-4 bg-white rounded-xl shadow-lg border border-[#E2E8F0] p-4 float-anim">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center">
+                                <iconify-icon icon="lucide:trending-up" width="20"
+                                    class="text-[#059669]"></iconify-icon>
+                            </div>
+                            <div>
+                                <div class="font-google-sans-flex font-bold text-xl text-[#0F172A]">100+</div>
+                                <div class="text-xs text-[#64748B]">Projects Delivered</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Content -->
+                <div>
+                    <span class="inline-block text-xs font-medium uppercase tracking-widest text-[#059669] mb-3">Why
+                        Nexora</span>
+                    <h2 class="font-google-sans-flex font-semibold text-2xl md:text-[30px] tracking-tight mb-6">
+                        Creativity Meets Innovation</h2>
+                    <p class="text-[#64748B] text-lg leading-relaxed mb-8">
+                        Nexora is a modern content creation agency where traditional filmmaking expertise meets
+                        cutting-edge AI technology. Our priority is blending creativity with innovation to give your
+                        brand a unique and powerful identity in the digital world.
+                    </p>
+
+                    <!-- Feature list -->
+                    <div class="space-y-5">
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center mt-0.5">
+                                <iconify-icon icon="lucide:zap" width="20" class="text-[#059669]"></iconify-icon>
+                            </div>
+                            <div>
+                                <h3 class="font-google-sans-flex font-semibold text-base mb-1">Hybrid Production</h3>
+                                <p class="text-sm text-[#64748B] leading-relaxed">Combining manual expertise with AI
+                                    efficiency for faster, smarter, and more creative outputs.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center mt-0.5">
+                                <iconify-icon icon="lucide:film" width="20" class="text-[#059669]"></iconify-icon>
+                            </div>
+                            <div>
+                                <h3 class="font-google-sans-flex font-semibold text-base mb-1">Cinematic Quality</h3>
+                                <p class="text-sm text-[#64748B] leading-relaxed">Professional-grade visuals crafted for
+                                    every platform—from mobile screens to cinema halls.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center mt-0.5">
+                                <iconify-icon icon="lucide:rocket" width="20" class="text-[#059669]"></iconify-icon>
+                            </div>
+                            <div>
+                                <h3 class="font-google-sans-flex font-semibold text-base mb-1">Brand Growth</h3>
+                                <p class="text-sm text-[#64748B] leading-relaxed">Tailored content strategies designed
+                                    to make your brand stand out and scale in the digital space.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="py-20 md:py-24 bg-white border-y border-[#E2E8F0]">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="inline-block text-xs font-medium uppercase tracking-widest text-[#059669] mb-3">Our
+                    Process</span>
+                <h2 class="font-google-sans-flex font-semibold text-2xl md:text-[30px] tracking-tight mb-4">From Idea to
+                    Impact in 4 Steps</h2>
+                <p class="text-[#64748B] text-lg leading-relaxed max-w-2xl mx-auto">A streamlined workflow that keeps
+                    you in the loop while we handle the heavy lifting.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="text-center relative">
+                    <div
+                        class="w-14 h-14 bg-[#059669] rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-sm">
+                        <span class="text-white font-google-sans-flex font-bold text-lg">1</span>
+                    </div>
+                    <h3 class="font-google-sans-flex font-semibold text-base mb-2">Discovery</h3>
+                    <p class="text-sm text-[#64748B] leading-relaxed">We understand your brand, goals, audience, and
+                        vision through an in-depth consultation.</p>
+                    <div
+                        class="hidden md:block absolute top-7 left-[60%] w-[80%] border-t-2 border-dashed border-emerald-200">
+                    </div>
+                </div>
+                <div class="text-center relative">
+                    <div
+                        class="w-14 h-14 bg-[#059669] rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-sm">
+                        <span class="text-white font-google-sans-flex font-bold text-lg">2</span>
+                    </div>
+                    <h3 class="font-google-sans-flex font-semibold text-base mb-2">Strategy</h3>
+                    <p class="text-sm text-[#64748B] leading-relaxed">We craft a creative plan, script, and storyboard
+                        tailored to your brand's unique voice.</p>
+                    <div
+                        class="hidden md:block absolute top-7 left-[60%] w-[80%] border-t-2 border-dashed border-emerald-200">
+                    </div>
+                </div>
+                <div class="text-center relative">
+                    <div
+                        class="w-14 h-14 bg-[#059669] rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-sm">
+                        <span class="text-white font-google-sans-flex font-bold text-lg">3</span>
+                    </div>
+                    <h3 class="font-google-sans-flex font-semibold text-base mb-2">Production</h3>
+                    <p class="text-sm text-[#64748B] leading-relaxed">Hybrid shooting and AI-powered creation deliver
+                        high-quality content efficiently.</p>
+                    <div
+                        class="hidden md:block absolute top-7 left-[60%] w-[80%] border-t-2 border-dashed border-emerald-200">
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div
+                        class="w-14 h-14 bg-[#059669] rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-sm">
+                        <span class="text-white font-google-sans-flex font-bold text-lg">4</span>
+                    </div>
+                    <h3 class="font-google-sans-flex font-semibold text-base mb-2">Deliver</h3>
+                    <p class="text-sm text-[#64748B] leading-relaxed">Polished, platform-ready content delivered on time
+                        with revision support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work / Portfolio Section -->
+    <section id="work" class="py-20 md:py-24">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span
+                    class="inline-block text-xs font-medium uppercase tracking-widest text-[#059669] mb-3">Portfolio</span>
+                <h2 class="font-google-sans-flex font-semibold text-2xl md:text-[30px] tracking-tight mb-4">Selected
+                    Work</h2>
+                <p class="text-[#64748B] text-lg leading-relaxed max-w-2xl mx-auto">A glimpse into the projects we've
+                    brought to life for brands across India.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Work 1 -->
+                <div
+                    class="work-card group relative rounded-2xl overflow-hidden border border-[#E2E8F0] bg-white shadow-sm hover:shadow-md transition-all">
+                    <div class="aspect-video overflow-hidden">
+                        <img src="https://picsum.photos/seed/nexora-work1/640/360.jpg" alt="Cinematic Brand Film"
+                            class="w-full h-full object-cover transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span
+                                class="text-[10px] font-medium uppercase tracking-widest text-[#059669] bg-emerald-50 px-2 py-0.5 rounded-full">Brand
+                                Film</span>
+                        </div>
+                        <h3 class="font-google-sans-flex font-semibold text-lg mb-1">Cinematic Brand Story</h3>
+                        <p class="text-sm text-[#64748B]">A 90-second cinematic narrative for a lifestyle brand, shot in
+                            4K with AI-enhanced color grading.</p>
+                    </div>
+                </div>
+
+                <!-- Work 2 -->
+                <div
+                    class="work-card group relative rounded-2xl overflow-hidden border border-[#E2E8F0] bg-white shadow-sm hover:shadow-md transition-all">
+                    <div class="aspect-video overflow-hidden">
+                        <img src="https://picsum.photos/seed/nexora-work2/640/360.jpg" alt="Social Media Campaign"
+                            class="w-full h-full object-cover transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span
+                                class="text-[10px] font-medium uppercase tracking-widest text-[#059669] bg-emerald-50 px-2 py-0.5 rounded-full">Social
+                                Media</span>
+                        </div>
+                        <h3 class="font-google-sans-flex font-semibold text-lg mb-1">Viral Reel Campaign</h3>
+                        <p class="text-sm text-[#64748B]">A series of 15 AI-powered reels that generated 2M+ views and
+                            50K+ engagements for a D2C brand.</p>
+                    </div>
+                </div>
+
+                <!-- Work 3 -->
+                <div
+                    class="work-card group relative rounded-2xl overflow-hidden border border-[#E2E8F0] bg-white shadow-sm hover:shadow-md transition-all">
+                    <div class="aspect-video overflow-hidden">
+                        <img src="https://picsum.photos/seed/nexora-work3/640/360.jpg" alt="AI Animation"
+                            class="w-full h-full object-cover transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span
+                                class="text-[10px] font-medium uppercase tracking-widest text-[#059669] bg-emerald-50 px-2 py-0.5 rounded-full">AI
+                                Animation</span>
+                        </div>
+                        <h3 class="font-google-sans-flex font-semibold text-lg mb-1">AI Product Showcase</h3>
+                        <p class="text-sm text-[#64748B]">Generative AI animations bringing a tech product to life with
+                            dynamic 3D-style motion graphics.</p>
+                    </div>
+                </div>
+
+                <!-- Work 4 -->
+                <div
+                    class="work-card group relative rounded-2xl overflow-hidden border border-[#E2E8F0] bg-white shadow-sm hover:shadow-md transition-all">
+                    <div class="aspect-video overflow-hidden">
+                        <img src="https://picsum.photos/seed/nexora-work4/640/360.jpg" alt="Ad Film"
+                            class="w-full h-full object-cover transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span
+                                class="text-[10px] font-medium uppercase tracking-widest text-[#059669] bg-emerald-50 px-2 py-0.5 rounded-full">Ad
+                                Film</span>
+                        </div>
+                        <h3 class="font-google-sans-flex font-semibold text-lg mb-1">Digital Ad Film</h3>
+                        <p class="text-sm text-[#64748B]">A high-energy 30-second commercial for a real estate brand,
+                            delivered in just 5 working days.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Banner -->
+    <section class="relative py-16 md:py-20 overflow-hidden noise-bg">
+        <div class="absolute inset-0 bg-[#0F172A]"></div>
+        <div class="relative z-10 max-w-6xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="font-google-sans-flex font-bold text-3xl md:text-4xl text-white mb-1">100+</div>
+                    <div class="text-sm text-[#94A3B8]">Projects Completed</div>
+                </div>
+                <div>
+                    <div class="font-google-sans-flex font-bold text-3xl md:text-4xl text-white mb-1">50+</div>
+                    <div class="text-sm text-[#94A3B8]">Happy Clients</div>
+                </div>
+                <div>
+                    <div class="font-google-sans-flex font-bold text-3xl md:text-4xl text-[#059669] mb-1">5.0</div>
+                    <div class="text-sm text-[#94A3B8]">Google Rating</div>
+                </div>
+                <div>
+                    <div class="font-google-sans-flex font-bold text-3xl md:text-4xl text-white mb-1">10M+</div>
+                    <div class="text-sm text-[#94A3B8]">Views Generated</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 md:py-24">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span
+                    class="inline-block text-xs font-medium uppercase tracking-widest text-[#059669] mb-3">Testimonials</span>
+                <h2 class="font-google-sans-flex font-semibold text-2xl md:text-[30px] tracking-tight mb-4">What Our
+                    Clients Say</h2>
+                <p class="text-[#64748B] text-lg leading-relaxed max-w-2xl mx-auto">Real reviews from real clients on
+                    Google.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Testimonial 1 -->
+                <div class="bg-white border border-[#E2E8F0] rounded-xl p-6 hover:shadow-md transition-all">
+                    <div class="flex items-center gap-0.5 mb-4">
+                        <iconify-icon icon="lucide:star" width="16" class="text-yellow-400"></iconify-icon>
+                        <iconify-icon icon="lucide:star" width="16" class="text-yellow-400"></iconify-icon>
+                        <iconify-icon icon="lucide:star" width="16" class="text-yellow-400"></iconify-icon>
+                        <iconify-icon icon="lucide:star" width="16" class="text-yellow-400"></iconify-icon>
+                        <iconify-icon icon="lucide:star" width="16" class="text-yellow-400"></iconify-icon>
+                    </div>
+                    <p class="text-sm text-[#475569] leading-relaxed mb-5">"I had an excellent experience working with
+                        this AI video company. The results exceeded my expectations and the turnaround time was
+                        impressive."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
+                            <span class="text-sm font-semibold text-[#059669]">JB</span>
+                        </div>
+                        <div>
+                            <div class="text-sm font-medium text-[#0F172A]">Jagdish Bhayani</div>
+                            <div class="text-xs text-[#64748B]">Google Review</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white border border-[#E2E8F0] rounded-xl p-6 hover:shadow-md transition-all">
+                    <div class="flex items-center gap-0.5 mb-4">
+                        <iconify-icon icon="lucide:star" width="16" class="text-yellow-400"></iconify-icon>
+                        <iconify-icon icon="lucide:star" width="16" class="text-yellow-400"></iconify-icon>
+                        <iconify-icon icon="lucide:star" width="16" class="text-yellow-400"></iconify-icon>
+                        <iconify-icon icon="lucide:star" width="16" class="text-yellow-400"></iconify-icon>
+                        <iconify-icon icon="lucide:star" width="16" class="text-yellow-400"></iconify-icon>
+                    </div>
+                    <p class="text-sm text-[#475569] leading-relaxed mb-5">"Exceptional work—clean, smooth, and
+                        professionally edited! They understood exactly what I needed and delivered beyond the brief."
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                            <span class="text-sm font-semibold text-[#2563EB]">JK</span>
+                        </div>
+                        <div>
+                            <div class="text-sm font-medium text-[#0F172A]">Janvi Kadakiya</div>
+                            <div class="text-xs text-[#64748B]">Google Review</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white border border-[#E2E8F0] rounded-xl p-6 hover:shadow-md transition-all">
+                    <div class="flex items-center gap-0.5 mb-4">
+                        <iconify-icon icon="lucide:star" width="16" class="text-yellow-400"></iconify-icon>
+                        <iconify-icon icon="lucide:star" width="16" class="text-yellow-400"></iconify-icon>
+                        <iconify-icon icon="lucide:star" width="16" class="text-yellow-400"></iconify-icon>
+                        <iconify-icon icon="lucide:star" width="16" class="text-yellow-400"></iconify-icon>
+                        <iconify-icon icon="lucide:star" width="16" class="text-yellow-400"></iconify-icon>
+                    </div>
+                    <p class="text-sm text-[#475569] leading-relaxed mb-5">"The communication was excellent, and they
+                        made everything easy to understand. Highly recommend Nexora for anyone looking for quality video
+                        work."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
+                            <span class="text-sm font-semibold text-[#7C3AED]">YB</span>
+                        </div>
+                        <div>
+                            <div class="text-sm font-medium text-[#0F172A]">Yog Bhayani</div>
+                            <div class="text-xs text-[#64748B]">Google Review</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Google review link -->
+            <div class="text-center mt-10">
+                <a href="https://www.google.com/maps/place/Nexora" target="_blank"
+                    class="inline-flex items-center gap-2 text-sm font-medium text-[#059669] hover:text-[#047857] transition-colors">
+                    View all 14 reviews on Google
+                    <iconify-icon icon="lucide:external-link" width="14"></iconify-icon>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 md:py-24 bg-white border-y border-[#E2E8F0]">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+                <!-- Left -->
+                <div>
+                    <span
+                        class="inline-block text-xs font-medium uppercase tracking-widest text-[#059669] mb-3">FAQ</span>
+                    <h2 class="font-google-sans-flex font-semibold text-2xl md:text-[30px] tracking-tight mb-4">
+                        Frequently Asked Questions</h2>
+                    <p class="text-[#64748B] text-lg leading-relaxed mb-6">Everything you need to know about working
+                        with Nexora. Can't find an answer? Reach out to us directly.</p>
+                    <a href="#contact"
+                        class="inline-flex items-center gap-2 bg-[#059669] hover:bg-[#047857] text-white text-sm font-medium px-6 py-3 rounded-lg transition-colors">
+                        Contact Us
+                        <iconify-icon icon="lucide:arrow-right" width="16"></iconify-icon>
+                    </a>
+                </div>
+
+                <!-- Right: Accordions -->
+                <div class="space-y-3">
+                    <details class="group border border-[#E2E8F0] rounded-lg overflow-hidden" open>
+                        <summary
+                            class="flex items-center justify-between cursor-pointer p-4 hover:bg-[#F8FAFC] transition-colors">
+                            <span class="text-sm font-medium text-[#0F172A] pr-4">What types of videos does Nexora
+                                produce?</span>
+                            <iconify-icon icon="lucide:chevron-down" width="18"
+                                class="text-[#64748B] flex-shrink-0 transition-transform group-open:rotate-180"></iconify-icon>
+                        </summary>
+                        <div class="px-4 pb-4 text-sm text-[#64748B] leading-relaxed">
+                            We produce brand films, ad films, social media reels, product videos, corporate videos, AI
+                            animations, motion graphics, and documentary-style content. Each project is tailored to your
+                            brand's needs and target platform.
+                        </div>
+                    </details>
+
+                    <details class="group border border-[#E2E8F0] rounded-lg overflow-hidden">
+                        <summary
+                            class="flex items-center justify-between cursor-pointer p-4 hover:bg-[#F8FAFC] transition-colors">
+                            <span class="text-sm font-medium text-[#0F172A] pr-4">How does AI fit into your production
+                                process?</span>
+                            <iconify-icon icon="lucide:chevron-down" width="18"
+                                class="text-[#64748B] flex-shrink-0 transition-transform group-open:rotate-180"></iconify-icon>
+                        </summary>
+                        <div class="px-4 pb-4 text-sm text-[#64748B] leading-relaxed">
+                            We use AI tools for tasks like script assistance, generative animations, automated editing,
+                            color grading, and VFX compositing. This hybrid approach means you get cinema-quality
+                            results faster and more cost-effectively—without sacrificing creative control.
+                        </div>
+                    </details>
+
+                    <details class="group border border-[#E2E8F0] rounded-lg overflow-hidden">
+                        <summary
+                            class="flex items-center justify-between cursor-pointer p-4 hover:bg-[#F8FAFC] transition-colors">
+                            <span class="text-sm font-medium text-[#0F172A] pr-4">What is the typical turnaround
+                                time?</span>
+                            <iconify-icon icon="lucide:chevron-down" width="18"
+                                class="text-[#64748B] flex-shrink-0 transition-transform group-open:rotate-180"></iconify-icon>
+                        </summary>
+                        <div class="px-4 pb-4 text-sm text-[#64748B] leading-relaxed">
+                            It depends on the project scope. Social media reels can be delivered in 3–5 working days,
+                            brand films in 1–2 weeks, and larger ad film projects in 2–4 weeks. We always agree on a
+                            timeline before starting.
+                        </div>
+                    </details>
+
+                    <details class="group border border-[#E2E8F0] rounded-lg overflow-hidden">
+                        <summary
+                            class="flex items-center justify-between cursor-pointer p-4 hover:bg-[#F8FAFC] transition-colors">
+                            <span class="text-sm font-medium text-[#0F172A] pr-4">Do you work with clients outside
+                                Ahmedabad?</span>
+                            <iconify-icon icon="lucide:chevron-down" width="18"
+                                class="text-[#64748B] flex-shrink-0 transition-transform group-open:rotate-180"></iconify-icon>
+                        </summary>
+                        <div class="px-4 pb-4 text-sm text-[#64748B] leading-relaxed">
+                            Absolutely! While we're based in Ahmedabad, we work with clients across India and
+                            internationally. For outstation projects, we travel for shoots and handle everything else
+                            remotely through seamless online collaboration.
+                        </div>
+                    </details>
+
+                    <details class="group border border-[#E2E8F0] rounded-lg overflow-hidden">
+                        <summary
+                            class="flex items-center justify-between cursor-pointer p-4 hover:bg-[#F8FAFC] transition-colors">
+                            <span class="text-sm font-medium text-[#0F172A] pr-4">How much does a project cost?</span>
+                            <iconify-icon icon="lucide:chevron-down" width="18"
+                                class="text-[#64748B] flex-shrink-0 transition-transform group-open:rotate-180"></iconify-icon>
+                        </summary>
+                        <div class="px-4 pb-4 text-sm text-[#64748B] leading-relaxed">
+                            Every project is unique, so we provide custom quotes based on your requirements. Social
+                            media content packages start affordably, while full-scale brand films and ad films are
+                            quoted individually. Contact us for a free consultation and estimate.
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="relative py-20 md:py-24 overflow-hidden noise-bg">
+        <div class="absolute inset-0 bg-[#0F172A]"></div>
+        <div class="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-3xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-2 border border-white/10 rounded-full px-4 py-1.5 mb-8">
+                <iconify-icon icon="lucide:sparkles" width="14" class="text-[#059669]"></iconify-icon>
+                <span class="text-xs font-medium text-[#94A3B8]">Let's Create Something Amazing</span>
+            </div>
+            <h2
+                class="font-google-sans-flex font-semibold text-3xl md:text-5xl tracking-tight text-white mb-6 leading-[1.1]">
+                Ready to Elevate Your Brand?</h2>
+            <p class="text-lg text-[#94A3B8] leading-relaxed mb-10 max-w-xl mx-auto">Tell us about your project and
+                let's discuss how Nexora can bring your vision to life with the power of filmmaking and AI.</p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#contact"
+                    class="bg-[#059669] hover:bg-[#047857] text-white text-base font-medium px-8 py-3 rounded-lg transition-colors flex items-center gap-2">
+                    Get Free Consultation
+                    <iconify-icon icon="lucide:arrow-right" width="18"></iconify-icon>
+                </a>
+                <a href="tel:09574601791"
+                    class="border border-white/20 hover:border-white/40 text-white text-base font-medium px-8 py-3 rounded-lg transition-colors flex items-center gap-2">
+                    <iconify-icon icon="lucide:phone" width="18"></iconify-icon>
+                    Call Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 md:py-24">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+                <!-- Left: Info -->
+                <div>
+                    <span class="inline-block text-xs font-medium uppercase tracking-widest text-[#059669] mb-3">Get In
+                        Touch</span>
+                    <h2 class="font-google-sans-flex font-semibold text-2xl md:text-[30px] tracking-tight mb-4">Let's
+                        Start a Conversation</h2>
+                    <p class="text-[#64748B] text-lg leading-relaxed mb-10">Have a project in mind? Drop us a message or
+                        visit our studio in Bapunagar, Ahmedabad.</p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <iconify-icon icon="lucide:map-pin" width="20" class="text-[#059669]"></iconify-icon>
+                            </div>
+                            <div>
+                                <div class="text-sm font-medium text-[#0F172A] mb-1">Studio Address</div>
+                                <div class="text-sm text-[#64748B]">Chamundanagar, Bapunagar,<br>Ahmedabad, Gujarat
+                                    380024</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <iconify-icon icon="lucide:phone" width="20" class="text-[#059669]"></iconify-icon>
+                            </div>
+                            <div>
+                                <div class="text-sm font-medium text-[#0F172A] mb-1">Phone</div>
+                                <a href="tel:09574601791"
+                                    class="text-sm text-[#059669] hover:text-[#047857] transition-colors">+91 95746
+                                    01791</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <iconify-icon icon="lucide:clock" width="20" class="text-[#059669]"></iconify-icon>
+                            </div>
+                            <div>
+                                <div class="text-sm font-medium text-[#0F172A] mb-1">Working Hours</div>
+                                <div class="text-sm text-[#64748B]">Monday – Saturday: 9:00 AM – 7:00 PM<br>Sunday:
+                                    Closed</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <iconify-icon icon="lucide:star" width="20" class="text-[#059669]"></iconify-icon>
+                            </div>
+                            <div>
+                                <div class="text-sm font-medium text-[#0F172A] mb-1">Google Rating</div>
+                                <div class="flex items-center gap-1.5">
+                                    <div class="flex items-center gap-0.5">
+                                        <iconify-icon icon="lucide:star" width="14"
+                                            class="text-yellow-400"></iconify-icon>
+                                        <iconify-icon icon="lucide:star" width="14"
+                                            class="text-yellow-400"></iconify-icon>
+                                        <iconify-icon icon="lucide:star" width="14"
+                                            class="text-yellow-400"></iconify-icon>
+                                        <iconify-icon icon="lucide:star" width="14"
+                                            class="text-yellow-400"></iconify-icon>
+                                        <iconify-icon icon="lucide:star" width="14"
+                                            class="text-yellow-400"></iconify-icon>
+                                    </div>
+                                    <span class="text-sm text-[#64748B]">5.0 (14 reviews)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map Embed -->
+                    <div class="mt-8 rounded-xl overflow-hidden border border-[#E2E8F0]">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.0!2d72.63!3d23.03!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sBapunagar%2C%20Ahmedabad!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                            width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade" class="w-full"></iframe>
+                    </div>
+                </div>
+
+                <!-- Right: Form -->
+                <div class="bg-white border border-[#E2E8F0] rounded-2xl p-6 md:p-8 shadow-sm">
+                    <h3 class="font-google-sans-flex font-semibold text-lg mb-1">Send Us a Message</h3>
+                    <p class="text-sm text-[#64748B] mb-6">We'll get back to you within 24 hours.</p>
+
+                    <form id="contactForm" class="space-y-5">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-[#0F172A] mb-1.5">Name *</label>
+                                <input type="text" required
+                                    class="w-full border border-[#E2E8F0] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#059669] focus:ring-1 focus:ring-[#059669] transition-colors"
+                                    placeholder="Your name">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-[#0F172A] mb-1.5">Phone *</label>
+                                <input type="tel" required
+                                    class="w-full border border-[#E2E8F0] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#059669] focus:ring-1 focus:ring-[#059669] transition-colors"
+                                    placeholder="+91 00000 00000">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-[#0F172A] mb-1.5">Email</label>
+                            <input type="email"
+                                class="w-full border border-[#E2E8F0] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#059669] focus:ring-1 focus:ring-[#059669] transition-colors"
+                                placeholder="you@company.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-[#0F172A] mb-1.5">Service Interested In</label>
+                            <select
+                                class="w-full border border-[#E2E8F0] rounded-lg px-3 py-2.5 text-sm text-[#64748B] focus:outline-none focus:border-[#059669] focus:ring-1 focus:ring-[#059669] transition-colors bg-white">
+                                <option value="">Select a service</option>
+                                <option>Cinematic Video Production</option>
+                                <option>AI-Driven Animations</option>
+                                <option>Social Media Content</option>
+                                <option>Brand Identity Design</option>
+                                <option>Ad Film Production</option>
+                                <option>Hybrid Post-Production</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-[#0F172A] mb-1.5">Project Details *</label>
+                            <textarea required rows="4"
+                                class="w-full border border-[#E2E8F0] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#059669] focus:ring-1 focus:ring-[#059669] transition-colors resize-none"
+                                placeholder="Tell us about your project, budget range, and timeline..."></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-[#059669] hover:bg-[#047857] text-white text-sm font-medium px-6 py-3 rounded-lg transition-colors flex items-center justify-center gap-2">
+                            Send Message
+                            <iconify-icon icon="lucide:send" width="16"></iconify-icon>
+                        </button>
+                    </form>
+
+                    <!-- Success toast (hidden by default) -->
+                    <div id="formSuccess"
+                        class="hidden mt-4 bg-emerald-50 border border-emerald-200 rounded-lg p-4 flex items-start gap-3">
+                        <iconify-icon icon="lucide:check-circle-2" width="20"
+                            class="text-[#059669] flex-shrink-0 mt-0.5"></iconify-icon>
+                        <div>
+                            <div class="text-sm font-medium text-[#0F172A]">Message sent successfully!</div>
+                            <div class="text-xs text-[#64748B] mt-0.5">We'll get back to you within 24 hours.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0F172A] border-t border-white/5">
+        <div class="max-w-6xl mx-auto px-6 py-12 md:py-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                <!-- Brand -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 bg-[#059669] rounded-lg flex items-center justify-center">
+                            <span class="text-white font-google-sans-flex font-bold text-sm">N</span>
+                        </div>
+                        <span
+                            class="font-google-sans-flex font-semibold text-xl tracking-tight text-white">Nexora</span>
+                    </div>
+                    <p class="text-sm text-[#94A3B8] leading-relaxed max-w-sm mb-6">
+                        A modern content creation agency where traditional filmmaking meets cutting-edge AI technology.
+                        Based in Ahmedabad, serving brands worldwide.
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <a href="#"
+                            class="w-9 h-9 border border-white/10 rounded-lg flex items-center justify-center text-[#94A3B8] hover:text-white hover:border-white/30 transition-all">
+                            <iconify-icon icon="mdi:instagram" width="18"></iconify-icon>
+                        </a>
+                        <a href="#"
+                            class="w-9 h-9 border border-white/10 rounded-lg flex items-center justify-center text-[#94A3B8] hover:text-white hover:border-white/30 transition-all">
+                            <iconify-icon icon="mdi:youtube" width="18"></iconify-icon>
+                        </a>
+                        <a href="#"
+                            class="w-9 h-9 border border-white/10 rounded-lg flex items-center justify-center text-[#94A3B8] hover:text-white hover:border-white/30 transition-all">
+                            <iconify-icon icon="mdi:linkedin" width="18"></iconify-icon>
+                        </a>
+                        <a href="#"
+                            class="w-9 h-9 border border-white/10 rounded-lg flex items-center justify-center text-[#94A3B8] hover:text-white hover:border-white/30 transition-all">
+                            <iconify-icon icon="mdi:whatsapp" width="18"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-sm font-medium text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#services"
+                                class="text-sm text-[#94A3B8] hover:text-white transition-colors">Services</a></li>
+                        <li><a href="#about" class="text-sm text-[#94A3B8] hover:text-white transition-colors">About
+                                Us</a></li>
+                        <li><a href="#work"
+                                class="text-sm text-[#94A3B8] hover:text-white transition-colors">Portfolio</a></li>
+                        <li><a href="#testimonials"
+                                class="text-sm text-[#94A3B8] hover:text-white transition-colors">Reviews</a></li>
+                        <li><a href="#contact"
+                                class="text-sm text-[#94A3B8] hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h4 class="text-sm font-medium text-white mb-4">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#services" class="text-sm text-[#94A3B8] hover:text-white transition-colors">Video
+                                Production</a></li>
+                        <li><a href="#services" class="text-sm text-[#94A3B8] hover:text-white transition-colors">AI
+                                Animations</a></li>
+                        <li><a href="#services" class="text-sm text-[#94A3B8] hover:text-white transition-colors">Social
+                                Media Content</a></li>
+                        <li><a href="#services" class="text-sm text-[#94A3B8] hover:text-white transition-colors">Brand
+                                Identity</a></li>
+                        <li><a href="#services" class="text-sm text-[#94A3B8] hover:text-white transition-colors">Ad
+                                Films</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom bar -->
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-xs text-[#94A3B8]">© 2025 Nexora. All rights reserved.</p>
+                <div class="flex items-center gap-6">
+                    <a href="#" class="text-xs text-[#94A3B8] hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-xs text-[#94A3B8] hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/919574601791" target="_blank"
+        class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#22C55E] hover:bg-[#16A34A] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all hover:scale-110 group">
+        <iconify-icon icon="mdi:whatsapp" width="28" class="text-white"></iconify-icon>
+        <span
+            class="absolute right-full mr-3 bg-[#0F172A] text-white text-xs font-medium px-3 py-1.5 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Chat
+            on WhatsApp</span>
+    </a>
+
+    <script>
+        // Mobile menu
+        const menuBtn = document.getElementById('menuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function openMenu() {
+            mobileMenu.classList.add('open');
+            menuOverlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.remove('open');
+            menuOverlay.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        menuBtn.addEventListener('click', openMenu);
+        closeMenuBtn.addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Contact form
+        const contactForm = document.getElementById('contactForm');
+        const formSuccess = document.getElementById('formSuccess');
+
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            // Show success message
+            formSuccess.classList.remove('hidden');
+            contactForm.reset();
+            // Hide after 5 seconds
+            setTimeout(() => {
+                formSuccess.classList.add('hidden');
+            }, 5000);
+        });
+
+        // Scroll-triggered animations using IntersectionObserver
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements that should animate on scroll
+        document.querySelectorAll('.service-card, .work-card, details').forEach((el, i) => {
+            el.style.opacity = '0';
+            el.style.animationDelay = `${i * 0.1}s`;
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
